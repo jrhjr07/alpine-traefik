@@ -68,8 +68,10 @@ if [ "X${TRAEFIK_HTTPS_ENABLE}" == "Xtrue" ] || [ "X${TRAEFIK_HTTPS_ENABLE}" == 
 [acme]
 email = \"${TRAEFIK_ACME_EMAIL}\"
 storage = \"${SERVICE_HOME}/acme/acme.json\"
+onDemand = ${TRAEFIK_ACME_ONDEMAND}
 OnHostRule = ${TRAEFIK_ACME_ONHOSTRULE}
 entryPoint = \"https\"
+acmeLogging = true
 "
 
 fi
@@ -77,7 +79,6 @@ fi
 if [ "X${ACME_ROUTE_53_ENABLED}" == "Xtrue" ]; then
       TRAEFIK_DNS_PROVIDER="
 dnsProvider = \"route53\"
-acmeLogging = true
 "
 fi
 
